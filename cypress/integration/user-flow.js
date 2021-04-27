@@ -14,7 +14,7 @@ describe('User-Flow Testing', () => {
     cy.visit(baseURL);
     cy.intercept({
       method: 'POST',
-      url: baseURL
+      url: 'http://localhost:3001/api/v1/orders'
     },
     {
       statusCode: 201,
@@ -25,7 +25,7 @@ describe('User-Flow Testing', () => {
       .get('[name=steak]').click()
       .get('[name=guacamole]').click()
       .get('#submitOrder').click()
-      // .get('.order').should('have.length', 6)
-      // .get('.order').eq(5).should('contain', 'Reginald')
+      .get('.order').should('have.length', 6)
+      .get('.order').eq(5).should('contain', 'Reginald')
   })
 })
