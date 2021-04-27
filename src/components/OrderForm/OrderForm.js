@@ -37,7 +37,12 @@ class OrderForm extends Component {
 
   handleIngredientChange = event => {
     event.preventDefault()
-    this.setState({ ingredients: [...this.state.ingredients, event.target.name]})
+    const quantCheck = this.state.ingredients.filter(ing => ing === event.target.name)
+    if (quantCheck.length >= 2) {
+      this.setState({ error: 'You may only add an ingredient twice'})
+    } else {
+    this.setState({ ingredients: [...this.state.ingredients, event.target.name], error: ''})
+    }
   }
 
   getButtons = () => {
