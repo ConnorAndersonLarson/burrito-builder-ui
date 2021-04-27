@@ -47,5 +47,10 @@ describe('Main-Page Testing', () => {
       .get('[name="sour cream"]').click()
       .get('#userIng').should('contain', 'beans').should('contain', 'sour cream')
   })
-
+  it('Should only allow ingredients to be added twice', () => {
+    cy.get('[name=beans]').click()
+      .get('[name=beans]').click()
+      .get('[name=beans]').click()
+      .get('#ingErr').should('contain', 'You may only add an ingredient twice')
+  })
 })

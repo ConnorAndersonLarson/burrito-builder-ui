@@ -74,7 +74,7 @@ class OrderForm extends Component {
         <button id="submitOrder" onClick={e => this.handleSubmit(e)}>
           Submit Order
         </button>
-        {!!this.state.error && <h3>{this.state.error}</h3>}
+        {!!this.state.error && <h3 id="ingErr">{this.state.error}</h3>}
       </form>
     )
   }
