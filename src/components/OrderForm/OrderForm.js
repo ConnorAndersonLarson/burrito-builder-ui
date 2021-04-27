@@ -17,6 +17,10 @@ class OrderForm extends Component {
     if (!!this.state.name && this.state.ingredients.length !== 0 ) {
       this.props.createOrder({name: this.state.name, ingredients: this.state.ingredients})
       this.clearInputs();
+    } else if (!this.state.name && this.state.ingredients.length !== 0 ) {
+      this.setState({ error: 'Please enter a name' })
+    } else if (!!this.state.name && this.state.ingredients.length === 0 ) {
+      this.setState({ error: 'Please enter at least one ingredient' })
     } else {
       this.setState({ error: 'Please enter a name and at least one ingredient' })
     }
