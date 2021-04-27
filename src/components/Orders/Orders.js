@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Orders.css';
 
 const Orders = props => {
@@ -23,3 +24,7 @@ const Orders = props => {
 }
 
 export default Orders;
+
+Orders.propTypes = {
+  orders: PropTypes.array
+}
