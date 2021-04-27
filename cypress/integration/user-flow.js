@@ -8,10 +8,6 @@ describe('User-Flow Testing', () => {
           body: orders
         })
       });
-  });
-
-  it('Should be able to create a new order', () => {
-    cy.visit(baseURL);
     cy.intercept({
       method: 'POST',
       url: 'http://localhost:3001/api/v1/orders'
@@ -19,7 +15,11 @@ describe('User-Flow Testing', () => {
     {
       statusCode: 201,
       body: {id: 6, name: "Reginald", ingredients: ["beans", "steak", "guacamole"]}
-    })
+    });
+  });
+
+  it('Should be able to create a new order', () => {
+    cy.visit(baseURL);
     cy.get('[type=text]').type('Reginald')
       .get('[name=beans]').click()
       .get('[name=steak]').click()
