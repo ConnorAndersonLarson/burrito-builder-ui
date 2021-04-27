@@ -14,6 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     getOrders()
+      .then(res => this.setState({orders: res.orders}))
       .catch(err => console.error('Error fetching:', err));
   }
 
