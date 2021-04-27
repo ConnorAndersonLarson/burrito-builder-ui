@@ -23,6 +23,7 @@ class App extends Component {
     setOrder(newOrder)
       .then(res => {
         if (res.id) {
+          console.log(res)
           this.setState({ orders: [...this.state.orders, res], error: '' })
         } else {
           this.setState({ error: 'Something went wrong, please try again'})
