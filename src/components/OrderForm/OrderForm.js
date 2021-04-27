@@ -57,7 +57,7 @@ class OrderForm extends Component {
 
         { ingredientButtons }
 
-        <p>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
+        <p id="userIng">Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
         <button id="submitOrder" onClick={e => this.handleSubmit(e)}>
           Submit Order

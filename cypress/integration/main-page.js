@@ -41,5 +41,11 @@ describe('Main-Page Testing', () => {
       .get('[name=cilantro]').should('exist')
       .get('[name="sour cream"]').should('exist')
   })
+  it('Should show selected ingredients', () => {
+    cy.get('[name=beans]').click()
+      .get('[name=sofritas]').click()
+      .get('[name="sour cream"]').click()
+      .get('#userIng').should('contain', 'beans').should('contain', 'sour cream')
+  })
 
 })
