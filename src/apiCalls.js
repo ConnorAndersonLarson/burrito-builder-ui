@@ -2,7 +2,12 @@ const baseURL = 'http://localhost:3001/api/v1/orders'
 
 export const getOrders = () => {
   return fetch(baseURL)
-      .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error();
+    }
+    return response.json();
+  })
 }
 
 export const setOrder = (newOrder) => {

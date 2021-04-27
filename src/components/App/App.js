@@ -16,14 +16,13 @@ class App extends Component {
   componentDidMount() {
     getOrders()
       .then(res => this.setState({orders: res.orders}))
-      .catch(err => console.error('Error fetching:', err));
+      .catch(err => this.setState({error: err}));
   }
 
   createOrder = (newOrder) => {
     setOrder(newOrder)
       .then(res => {
         if (res.id) {
-          console.log(res)
           this.setState({ orders: [...this.state.orders, res], error: '' })
         } else {
           this.setState({ error: 'Something went wrong, please try again'})
@@ -38,8 +37,8 @@ class App extends Component {
           <h1>Burrito Builder</h1>
           <OrderForm createOrder={this.createOrder}/>
         </header>
-
-        <Orders orders={this.state.orders} />
+        { !!this.state.orders && <Orders orders={this.state.orders} />}
+        { this.state.orders.length === 0 && !!this.state.error && <h2 id="err">Our Burritos have gone rogue!</h2> }
       </main>
     );
   }
